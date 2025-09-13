@@ -1,0 +1,49 @@
+
+Procedure FACTORIAL compiled
+
+
+Procedure FIBONACCI compiled
+
+
+Procedure UPDATE_PRICE_BY_CAT compiled
+
+
+Procedure UPDATE_PRICE_UNDER_AVG compiled
+
+
+Procedure PRODUCT_PRICE_REPORT compiled
+
+Factorial(5): 120
+Factorial(0): 1
+
+
+PL/SQL procedure successfully completed.
+
+Fibonacci sum up to 5: 12
+Fibonacci sum up to 0: 0
+
+
+PL/SQL procedure successfully completed.
+
+Rows updated: 70
+Rows updated: 50
+
+
+PL/SQL procedure successfully completed.
+
+Rows updated: 186
+Rows updated: 192
+
+
+PL/SQL procedure successfully completed.
+
+Cheap: 76
+Fair: 209
+Expensive: 3
+Cheap: 76
+Fair: 209
+Expensive: 3
+
+
+PL/SQL procedure successfully completed.
+

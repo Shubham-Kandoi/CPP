@@ -1,0 +1,281 @@
+
+Procedure STAFF_ADD compiled
+
+Q2 TEST: Insert a valid record, then an invalid JOB insert to trigger error.
+
+PL/SQL procedure successfully completed.
+
+
+        ID NAME            DEPT JOB        YEARS     SALARY       COMM
+---------- --------- ---------- ----- ---------- ---------- ----------
+       370 Test User         90 Sales          1      50000       2000
+
+
+PL/SQL procedure successfully completed.
+
+
+1 row deleted.
+
+
+Commit complete.
+
+
+Error starting at line : 64 in command -
+CREATE TABLE STAFFAUDTBL (
+    ID      NUMBER,
+    INCJOB  VARCHAR2(100)
+)
+Error report -
+ORA-00955: name is already used by an existing object
+00955. 00000 -  "name is already used by an existing object"
+*Cause:    
+*Action:
+
+Trigger INS_JOB compiled
+
+Q3 TEST: Insert with invalid JOB to see STAFFAUDTBL populated.
+
+PL/SQL procedure successfully completed.
+
+
+        ID A INCJOB                                                                                                  OLDCOMM    NEWCOMM
+---------- - ---------------------------------------------------------------------------------------------------- ---------- ----------
+       370 D                                                                                                            2000           
+
+
+0 rows deleted.
+
+
+Commit complete.
+
+
+Function TOTAL_CMP compiled
+
+Q4 TEST: valid and invalid calls
+Example ID used: 360
+Total comp = 96000
+
+
+PL/SQL procedure successfully completed.
+
+Calling total_cmp with invalid ID 999999
+Expected error: ORA-20003: total_cmp: Invalid ID - no such STAFF record.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+Trigger UPD_COMM compiled
+
+
+Error starting at line : 166 in command -
+DROP PROCEDURE set_comm PURGE
+Error report -
+ORA-00933: SQL command not properly ended
+00933. 00000 -  "SQL command not properly ended"
+*Cause:    
+*Action:
+
+Procedure SET_COMM compiled
+
+Q5 TEST: Show STAFF before and after running set_comm; show STAFFAUDTBL changes
+
+        ID NAME      JOB       SALARY       COMM
+---------- --------- ----- ---------- ----------
+       360 Pkg User  Mgr        80000      16000
+       201 Insrt_001 Sales      60000      18000
+       202 Insrt_002 Sales      40000      12000
+       205 Upd_001   Sales      60000      18000
+       302 ins_002   Sales      40000      12000
+       303 ins_003   Sales      40000      12000
+       304 ins_004   Sales      30000       9000
+       305 up_001    Sales      65000      19500
+       306 up_002    Sales      30000       9000
+       307 up_003    Sales      40000      12000
+
+10 rows selected. 
+
+
+PL/SQL procedure successfully completed.
+
+
+        ID NAME      JOB       SALARY       COMM
+---------- --------- ----- ---------- ----------
+       360 Pkg User  Mgr        80000      16000
+       201 Insrt_001 Sales      60000      18000
+       202 Insrt_002 Sales      40000      12000
+       205 Upd_001   Sales      60000      18000
+       302 ins_002   Sales      40000      12000
+       303 ins_003   Sales      40000      12000
+       304 ins_004   Sales      30000       9000
+       305 up_001    Sales      65000      19500
+       306 up_002    Sales      30000       9000
+       307 up_003    Sales      40000      12000
+
+10 rows selected. 
+
+
+        ID A INCJOB                                                                                                  OLDCOMM    NEWCOMM
+---------- - ---------------------------------------------------------------------------------------------------- ---------- ----------
+       370 D                                                                                                            2000           
+
+
+PL/SQL procedure successfully completed.
+
+
+Table STAFFAUDTBL created.
+
+
+Trigger STAFF_TRIG compiled
+
+Q6 TEST: Test INSERT (good 45), UPDATE (COMM change 65 JOB), DELETE
+
+Error starting at line : 271 in command -
+INSERT INTO STAFF (ID, NAME, DEPT, JOB, YEARS, SALARY, COMM)
+VALUES (8888, 'Good Insert', 90, 'Sales', 1, 45000, 0)
+Error at Command Line : 272 Column : 15
+Error report -
+SQL Error: ORA-12899: value too large for column "DBS311_251NAA13"."STAFF"."NAME" (actual: 11, maximum: 9)
+12899. 00000 -  "value too large for column %s (actual: %s, maximum: %s)"
+*Cause:    An attempt was made to insert or update a column with a value
+           which is too wide for the width of the destination column.
+           The name of the column is given, along with the actual width
+           of the value, and the maximum allowed width of the column.
+           Note that widths are reported in characters if character length
+           semantics are in effect for the column, otherwise widths are
+           reported in bytes.
+*Action:   Examine the SQL statement for correctness.  Check source
+           and destination column data types.
+           Either make the destination column wider, or use a subset
+           of the source column (i.e. use substring).
+
+Commit complete.
+
+Expected bad insert error: ORA-12899: value too large for column "DBS311_251NAA13"."STAFF"."NAME" (actual: 10, maximum: 9)
+
+
+PL/SQL procedure successfully completed.
+
+
+0 rows updated.
+
+
+Commit complete.
+
+
+PL/SQL procedure successfully completed.
+
+
+0 rows deleted.
+
+
+Commit complete.
+
+no rows selected
+
+0 rows deleted.
+
+
+Commit complete.
+
+
+Function FUN_NAME compiled
+
+
+SHUBHAM_OUT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ShUbHaM
+
+
+UTKARSH_OUT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+UtKaRsH
+
+
+NAME
+---------
+ALTERNATE_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Pkg User  
+PkG UsEr                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+Insrt_001 
+InSrT_001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
+Insrt_002 
+InSrT_002                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
+
+NAME
+---------
+ALTERNATE_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Upd_001   
+UpD_001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+ins_002   
+InS_002                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+
+
+Function VOWEL_CNT compiled
+
+Q8 TEST: count vowels in NAME and JOB columns
+
+NAME      NAME_VOWELS JOB   JOB_VOWELS
+--------- ----------- ----- ----------
+Pkg User            2 Mgr            0
+Insrt_001           1 Sales          2
+Insrt_002           1 Sales          2
+Upd_001             1 Sales          2
+ins_002             1 Sales          2
+ins_003             1 Sales          2
+ins_004             1 Sales          2
+up_001              1 Sales          2
+up_002              1 Sales          2
+up_003              1 Sales          2
+
+10 rows selected. 
+
+no rows selected
+
+Package STAFF_PCK compiled
+
+
+Package Body STAFF_PCK compiled
+
+Q9 TEST: Using package procedures and functions
+
+PL/SQL procedure successfully completed.
+
+
+        ID NAME            DEPT JOB        YEARS     SALARY       COMM
+---------- --------- ---------- ----- ---------- ---------- ----------
+       370 Pkg User          90 Mgr            1      80000      16000
+       360 Pkg User          90 Mgr            1      80000      16000
+
+
+Error starting at line : 446 in command -
+DECLARE
+    v_id STAFF.ID%TYPE;
+    v_total NUMBER;
+BEGIN
+    SELECT ID INTO v_id FROM STAFF WHERE NAME = 'Pkg User';
+    v_total := staff_pck.total_cmp(v_id);
+    DBMS_OUTPUT.PUT_LINE('Total comp via package for ID ' || v_id || ' = ' || v_total);
+END;
+Error report -
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 5
+01422. 00000 -  "exact fetch returns more than requested number of rows"
+*Cause:    The number specified in exact fetch is less than the rows returned.
+*Action:   Rewrite the query or change number of rows requested
+
+2 rows deleted.
+
+
+Commit complete.
+
